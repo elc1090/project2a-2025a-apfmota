@@ -142,47 +142,25 @@ async function  updateReposOptions() {
 }
 
 function requestUserRepos(username, repoName) {
-    // create a variable to hold the `Promise` returned from `fetch`
-    const options = {
-        headers: {
-            "Authorization": "Bearer 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"
-        }
-    }
     if (repoName != '') {
-        return Promise.resolve(fetch(`https://api.github.com/repos/${username}/${repoName}`, options));
+        return Promise.resolve(fetch(`https://api.github.com/repos/${username}/${repoName}`));
     } else {
-        return Promise.resolve(fetch(`https://api.github.com/users/${username}/repos`, options));
+        return Promise.resolve(fetch(`https://api.github.com/users/${username}/repos`));
     }
 }
 
 function commits(username, repoName) {
-    // create a variable to hold the `Promise` returned from `fetch`
-    const options = {
-        headers: {
-            "Authorization": "Bearer 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"
-        }
-    }
-    return Promise.resolve(fetch(`https://api.github.com/repos/${username}/${repoName}/commits`, options));
+    return Promise.resolve(fetch(`https://api.github.com/repos/${username}/${repoName}/commits`));
 }
 
 async function userExists(username) {
-    const options = {
-        headers: {
-            "Authorization": "Bearer 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"
-        }
-    }
     let repos;
-    const response = await fetch(`https://api.github.com/users/${username}`, options);
+    const response = await fetch(`https://api.github.com/users/${username}`);
     return response.status == 200;   
 }
 
 async function getUserRepos(username) {
-    const options = {
-        headers: {
-            "Authorization": "Bearer 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"
-        }
-    }
     let repos;
-    const response = await fetch(`https://api.github.com/users/${username}/repos`, options);
+    const response = await fetch(`https://api.github.com/users/${username}/repos`);
     return await response.json();
 }
