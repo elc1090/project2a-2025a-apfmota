@@ -145,7 +145,7 @@ function requestUserRepos(username, repoName) {
     // create a variable to hold the `Promise` returned from `fetch`
     const options = {
         headers: {
-            "Authorization": "Bearer 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"
+            "Authorization": "Bearer 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"
         }
     }
     if (repoName != '') {
@@ -159,7 +159,7 @@ function commits(username, repoName) {
     // create a variable to hold the `Promise` returned from `fetch`
     const options = {
         headers: {
-            "Authorization": "Bearer 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"
+            "Authorization": "Bearer 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"
         }
     }
     return Promise.resolve(fetch(`https://api.github.com/repos/${username}/${repoName}/commits`, options));
@@ -168,7 +168,7 @@ function commits(username, repoName) {
 async function userExists(username) {
     const options = {
         headers: {
-            "Authorization": "Bearer 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"
+            "Authorization": "Bearer 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"
         }
     }
     let repos;
@@ -179,7 +179,7 @@ async function userExists(username) {
 async function getUserRepos(username) {
     const options = {
         headers: {
-            "Authorization": "Bearer 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"
+            "Authorization": "Bearer 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"
         }
     }
     let repos;
