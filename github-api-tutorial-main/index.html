@@ -7,17 +7,58 @@
     <link rel="icon" type="image/png" href="assets/favicon.ico">
 
     <!-- Import the Bootstrap CSS CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous">
+    <style>
+        .commitList {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .commit {
+            font-size: 12px;
+        }
+    </style>
 </head>
 
 <body>
 
 <h3 class="text-center mt-5">GitHub API</h3>
-<form id="gitHubForm" class="form-inline mx-auto" style="width: 300px">
-    <input id="usernameInput" class="form-control mb-5" type="text" name="username" placeholder="GitHub Username">
-    <input type="submit" class="btn btn-primary ml-2 mb-5" value="Submit">
+<form id="gitHubForm" class="form-inline mx-auto" style="width: 400px;">
+    <section class="d-flex my-3" style="width: 100%;">
+        <div class="form-floating mx-2" style="width: 70%;">
+            <input  id="usernameInput" class="form-control" type="text" name="username" placeholder="User">
+            <label for="usernameInput" class="text-left">GitHub Username</label>
+        </div>
+        <button style="width: 20%;" id="findButton" type="button" class="btn btn-secondary p-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                </svg>
+        </button>
+    </section>
+    <section id="ShowRepos" style="display: none; width: 100%;">
+        <div class="form-floating mx-2" style="width: 70%">
+            <select id="repoNameInput" class="form-control" type="text" name="repoName">
+                <option value="">All user repos</option>
+            </select>
+            <label for="repoNameInput">Repo</label>
+        </div>
+        <button style="width: 20%;" type="submit" class="btn btn-primary mb-5 p-3">Show</button>
+    </section>
+    <section id="userNotFound" style="display: none;">
+        <div class="d-flex justify-content-center">
+            <div class="bg-warning-subtle rounded p-3 m-3">
+                User not found!
+            </div>
+        </div>
+    </section>
+    <section id="loading" style="display: none;">
+        <div class="d-flex justify-content-center my-5">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </section>
 </form>
 <ul id="userRepos" class="list-group mx-auto mb-5" style="width: 500px"></ul>
 <script src="app.js"></script>
